@@ -833,27 +833,6 @@ footer{
 }
 
 
-.hero-title {
-  position: absolute;
-  top: 50%; left: 0; right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  pointer-events: none;
-  z-index: 2;
-}
-.hero-title h1 {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(28px, 4.5vw, 64px);
-  letter-spacing: 0.02em;
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--white);
-}
-.hero-title h1:first-child { padding-left: clamp(32px, 6vw, 80px); }
-.hero-title h1:last-child  { padding-right: clamp(32px, 6vw, 80px); }
 
 
 /* ── MARQUEE ── */
@@ -926,7 +905,7 @@ footer{
   .features-grid { grid-template-columns: 1fr; }
   .features-left { border-right: none; border-bottom: 1px solid var(--border); }
   .sobre-inner { grid-template-columns: 1fr !important; min-height: auto !important; }
-  .sobre-left { min-height: 70vw !important; height: 70vw !important; border-right: none; border-bottom: 1px solid var(--border); }
+  .sobre-left { min-height: 100vw !important; height: 100vw !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
   .sobre-right { padding: 36px 24px; }
   .info-line { opacity: 1 !important; transform: none !important; transition: none !important; }
   .sobre-stats-row { opacity: 1 !important; transform: none !important; }
@@ -950,17 +929,7 @@ footer{
   .nav-logo-img { height: 52px; }
 
   /* Hero title — stack vertically, smaller font */
-  .hero-title {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center;
-    gap: 0;
-    padding: 0 24px !important;
-  }
-  .hero-title h1 {
-    font-size: clamp(32px, 10vw, 52px) !important;
-    padding: 0 !important;
-  }
+
 
   /* About */
   #about { grid-template-columns: 1fr; }
@@ -983,7 +952,7 @@ footer{
 
   /* Sobre */
   .sobre-inner { grid-template-columns: 1fr !important; min-height: auto !important; }
-  .sobre-left { min-height: 75vw !important; height: 75vw !important; border-right: none !important; border-bottom: 1px solid var(--border); }
+  .sobre-left { min-height: 100vw !important; height: 100vw !important; border-right: none !important; border-bottom: 1px solid var(--border) !important; }
   .sobre-right { padding: 36px 24px; }
   .info-line { opacity: 1 !important; transform: none !important; transition: none !important; }
   .sobre-stats-row { opacity: 1 !important; transform: none !important; }
@@ -1016,34 +985,53 @@ footer{
 }
 
 
-/* Desktop title */
-.desktop-title { display: flex !important; }
-.mobile-title { display: none !important; }
+
+
 
 @media (max-width: 600px) {
-  .desktop-title { display: none !important; }
-  .mobile-title {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    position: absolute !important;
-    top: 50% !important;
-    left: 24px !important;
-    right: 24px !important;
-    transform: translateY(-50%) !important;
-    gap: 0 !important;
-    padding: 0 !important;
+
+}
+
+
+@media (max-width: 600px) {
+}
+
+@media (max-width: 600px) {
+    }
+
+/* Hero title */
+.hero-title {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(32px, 6vw, 80px);
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-title h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 64px);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+/* Tablet & Mobile: stack vertically */
+@media (max-width: 900px) {
+  .hero-title {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 32px;
+    gap: 6px;
   }
-  .mobile-title h1 {
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 800 !important;
-    font-size: clamp(36px, 11vw, 56px) !important;
-    text-transform: uppercase !important;
-    line-height: 1.05 !important;
-    color: var(--white) !important;
-    padding: 0 !important;
-    width: 100% !important;
+  .hero-title h1 {
+    font-size: clamp(28px, 8vw, 52px);
   }
 }
 
@@ -1065,13 +1053,9 @@ footer{
   <div id="lottie-bg"></div>
   
   
-  <div class="hero-title desktop-title">
-    <h1 class="fade1">MENSURAÇÃO</h1>
-    <h1 class="fade2">CONTROLE</h1>
-  </div>
-  <div class="hero-title mobile-title">
-    <h1 class="fade1">MENSURAÇÃO</h1>
-    <h1 class="fade2">CONTROLE</h1>
+  <div class="hero-title">
+    <h1 class="hero-word fade1">MENSURAÇÃO</h1>
+    <h1 class="hero-word fade2">CONTROLE</h1>
   </div>
   </div>
 <div id="hero-spacer"></div>
