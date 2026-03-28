@@ -1389,28 +1389,38 @@ footer{
 
 
 
-/* ── SCROLL REVEAL (cards) ── */
+/* ── SCROLL REVEAL bidirecional ── */
 const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}}); 
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+    } else {
+      e.target.classList.remove('vis');
+    }
+  });
 },{threshold:0.1});
 document.querySelectorAll('.reveal,.process-card,.project-card,.testi-card').forEach(el=>{
-  el.classList.add('reveal');io.observe(el);
+  el.classList.add('reveal');
+  io.observe(el);
 });
 
-/* ── SOBRE: entrou na tela → anima tudo ── */
+/* ── SOBRE: bidirecional ── */
 (function(){
   const section = document.getElementById('sobreInner');
   if(!section) return;
+  const els = section.querySelectorAll('.info-line, .sobre-stats-row');
+
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting) {
-        section.querySelectorAll('.info-line, .sobre-stats-row').forEach(el => {
-          el.classList.add('vis');
-        });
-        obs.unobserve(e.target);
+      if(e.isIntersecting){
+        // stagger in
+        els.forEach((el,i) => setTimeout(()=>el.classList.add('vis'), i*130));
+      } else {
+        // remove when section leaves
+        els.forEach(el => el.classList.remove('vis'));
       }
     });
-  }, { threshold: 0.05 });
+  }, { threshold: 0.1 });
   obs.observe(section);
 })();
 
