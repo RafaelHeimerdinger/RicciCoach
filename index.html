@@ -1271,10 +1271,108 @@ footer{
   .c1-photo { max-width:100%; }
   .c1-photos-row .c1-photo { max-width:100%; }
 }
+.evo-title-mobile { display:none; }
 @media(max-width:600px) {
   .c1-nums { gap:clamp(32px,8vw,56px); }
   .c1-num-val { font-size:clamp(52px,16vw,80px); }
+  .evo-title-desktop { display:none; }
+  .evo-title-mobile { display:block; }
 }
+/* ── EVO 4 — layout exclusivo ── */
+.evo4-bridge {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px,4vw,48px);
+  padding: clamp(32px,5vw,56px) 0;
+}
+.evo4-bridge-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(186,12,47,0.35), transparent);
+}
+.evo4-bridge-content {
+  text-align: center;
+  flex-shrink: 0;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.evo4-bridge-text {
+  font-size: clamp(13px,1.5vw,15px);
+  line-height: 1.78;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+.evo4-bridge-text em { font-style: normal; color: var(--white); }
+.evo4-bridge-arrow svg { width: 20px; height: 32px; opacity: 0.6; }
+
+/* Hero foto 15 meses */
+.evo4-hero-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 0 clamp(32px,5vw,56px);
+}
+.evo4-hero-img-wrap {
+  position: relative;
+  width: min(480px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(186,12,47,0.3);
+  box-shadow: 0 0 60px rgba(186,12,47,0.15), 0 0 120px rgba(186,12,47,0.06);
+}
+.evo4-hero-img-wrap img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 6s ease;
+}
+.evo4-hero-img-wrap:hover img { transform: scale(1.04); }
+.evo4-hero-chip {
+  position: absolute;
+  top: 16px; left: 16px;
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 5px 12px;
+  background: var(--accent);
+  color: #fff;
+}
+.evo4-hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+  padding: clamp(20px,3vw,32px);
+}
+.evo4-hero-quote {
+  font-family: 'Instrument Sans', sans-serif;
+  font-style: italic;
+  font-size: clamp(12px,1.4vw,14px);
+  line-height: 1.65;
+  color: rgba(255,255,255,0.65);
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+}
+
+@media(max-width:600px) {
+  .evo4-bridge { flex-direction: column; gap: 16px; }
+  .evo4-bridge-line { width: 80%; height: 1px; }
+}
+
+/* ── SCROLL REVEAL — evolution cards ── */
+.c1-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.c1-reveal.vis { opacity: 1; transform: translateY(0); }
+.c1-reveal-photo {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.c1-reveal-photo.vis { opacity: 1; transform: translateY(0) scale(1); }
 </style>
 
 <div class="evo-gap"></div>
@@ -1286,7 +1384,7 @@ footer{
   <div class="evo-hero-body">
     <div>
       <div class="evo-tag">Evoluções</div>
-      <h2 class="evo-hero-title">Resultados</h2>
+      <h2 class="evo-hero-title evo-title-desktop">Resultados</h2><h2 class="evo-hero-title evo-title-mobile">Resul<br>tados</h2>
       <p class="evo-hero-desc">Cada transformação é única. Aqui você vê o que acontece quando técnica, estratégia e comprometimento se encontram — resultados reais, de pessoas reais.</p>
     </div>
     <div class="evo-hero-foot">
@@ -1543,8 +1641,233 @@ footer{
 
     </div>
   </div>
-  <div id="evo-tpl-2"><div style="padding:96px;text-align:center;font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.12);">Aluno 03 — em breve</div></div>
-  <div id="evo-tpl-3"><div style="padding:96px;text-align:center;font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.12);">Aluno 04 — em breve</div></div>
+  <!-- ── ALUNO 03 ── -->
+  <div id="evo-tpl-2">
+    <div class="c1">
+
+      <!-- BLOCO 1: texto + destaque lateral depois -->
+      <div class="c1-block">
+        <div class="c1-text">
+          <div class="c1-eyebrow">Aluno 03 — 5 meses</div>
+          <h3 class="c1-heading">1 passo<br>para trás,<br><em>5 para frente</em></h3>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O problema</span>
+            <p class="c1-entry-txt">Dores lombares constantes que comprometiam a performance e bloqueavam qualquer progresso real. O volume e a seleção de exercícios não eram o erro — <strong>a execução era.</strong></p>
+          </div>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O que fizemos</span>
+            <p class="c1-entry-txt">Demos um passo para trás: construímos a base motora que faltava. Ajustamos execução do zero, reorganizamos a dieta e respeitamos o processo.</p>
+          </div>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O que conquistou</span>
+            <p class="c1-entry-txt"><strong>+Músculo, –Gordura, proporção muscular visível — e sem dores.</strong> O resultado fala por si.</p>
+          </div>
+        </div>
+        <div class="c1-photo-wrap">
+          <div class="c1-photo">
+            <img src="riccicoach_assets/image_22.png" alt="Resultado final — lateral, 5 meses">
+            <div class="c1-photo-chip accent">5 meses</div>
+          </div>
+          <div class="c1-caption">
+            <strong>Vista Lateral — Resultado Final</strong>
+            Postura corrigida, composição transformada e lombar sem dores após 5 meses de base motora e protocolo ajustado.
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO 2: comparativo lateral — protagonista -->
+      <div class="c1-block flip">
+        <div class="c1-text" style="justify-content:center;">
+          <div class="c1-eyebrow">Destaque — Vista Lateral</div>
+          <h3 class="c1-heading" style="font-size:clamp(22px,3vw,38px);">A vista que<br><em>não mente</em></h3>
+          <p style="font-size:clamp(12px,1.35vw,14px);line-height:1.76;color:rgba(255,255,255,0.45);margin:0;">A lateral revela tudo: redução de gordura abdominal, melhora postural real e ganho de espessura muscular conquistados depois de resolver o problema na raiz — a base motora.</p>
+        </div>
+        <div class="c1-photo-wrap">
+          <div class="c1-photos-row">
+            <div class="c1-photo-wrap">
+              <div class="c1-photo bw">
+                <img src="riccicoach_assets/image_19.png" alt="Lateral — Antes">
+                <div class="c1-photo-chip muted">Antes</div>
+              </div>
+              <div class="c1-caption">
+                <strong>Lateral — Antes</strong>
+                Dor lombar presente, postura comprometida, progresso bloqueado.
+              </div>
+            </div>
+            <div class="c1-photo-wrap">
+              <div class="c1-photo">
+                <img src="riccicoach_assets/image_22.png" alt="Lateral — 5 meses">
+                <div class="c1-photo-chip accent">5 meses</div>
+              </div>
+              <div class="c1-caption">
+                <strong>Lateral — 5 meses</strong>
+                Perfil transformado. Postura, proporção e zero dor.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO 3: comparativo costas Antes vs Depois -->
+      <div class="c1-block">
+        <div class="c1-text" style="justify-content:center;">
+          <div class="c1-eyebrow">Comparativo — Costas</div>
+          <h3 class="c1-heading" style="font-size:clamp(22px,3vw,38px);">Base<br>que <em>constrói</em></h3>
+          <p style="font-size:clamp(12px,1.35vw,14px);line-height:1.76;color:rgba(255,255,255,0.45);margin:0;">Quando a execução é corrigida na raiz, o corpo responde. A vista posterior mostra o ganho real de massa e proporção em 5 meses — sem atalhos, sem dor.</p>
+        </div>
+        <div class="c1-photo-wrap">
+          <div class="c1-photos-row">
+            <div class="c1-photo-wrap">
+              <div class="c1-photo bw">
+                <img src="riccicoach_assets/image_17.png" alt="Costas — Antes">
+                <div class="c1-photo-chip muted">Antes</div>
+              </div>
+              <div class="c1-caption">
+                <strong>Costas — Antes</strong>
+                Execução falha, resultado estagnado.
+              </div>
+            </div>
+            <div class="c1-photo-wrap">
+              <div class="c1-photo">
+                <img src="riccicoach_assets/image_20.png" alt="Costas — 5 meses">
+                <div class="c1-photo-chip accent">5 meses</div>
+              </div>
+              <div class="c1-caption">
+                <strong>Costas — 5 meses</strong>
+                Espessura, separação e proporção conquistadas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO 4: números -->
+      <div class="c1-nums">
+        <div class="c1-num">
+          <div class="c1-num-val c1-anim">5 meses</div>
+          <div class="c1-num-lbl">De protocolo estruturado</div>
+          <p class="c1-num-sub">Do primeiro ajuste de execução ao resultado visível em composição, proporção e postura.</p>
+        </div>
+        <div class="c1-num">
+          <div class="c1-num-val c1-anim">0 dor</div>
+          <div class="c1-num-lbl">Na lombar ao final</div>
+          <p class="c1-num-sub">Base motora correta eliminou o problema na raiz — liberando o potencial que o treino anterior bloqueava.</p>
+        </div>
+      </div>
+
+      <!-- AVISO DE PRIVACIDADE -->
+      <p style="margin-top:clamp(28px,4vw,48px);font-size:10px;color:rgba(255,255,255,0.18);letter-spacing:0.03em;line-height:1.6;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">
+        * Rosto e tatuagens foram borrados para preservar a privacidade do aluno. As imagens são de uso exclusivo do RicciCoach e foram compartilhadas com autorização.
+      </p>
+
+    </div>
+  </div>
+  <!-- ── ALUNO 04 ── -->
+  <div id="evo-tpl-3">
+    <div class="c1">
+
+      <!-- BLOCO 1: narrativa de abertura -->
+      <div class="c1-block">
+        <div class="c1-text">
+          <div class="c1-eyebrow">Aluno 04 — 15 meses</div>
+          <h3 class="c1-heading">Propósito<br>antes de <em>tudo</em></h3>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O ponto de partida</span>
+            <p class="c1-entry-txt">Aluno chegou com um propósito claro — mas sem direcionamento. Não via evolução no treino. Esforço existia; método, não.</p>
+          </div>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O que estruturamos</span>
+            <p class="c1-entry-txt">Alinhamos dieta, treino e — o que muitos ignoram — <strong>Mindset.</strong> Comportamento e hábitos construídos de forma intencional, semana a semana.</p>
+          </div>
+          <div class="c1-entry">
+            <span class="c1-entry-lbl">O resultado</span>
+            <p class="c1-entry-txt">Em 3 meses, a transformação já era inegável. Mas o aluno queria mais — e <strong>decidiu continuar.</strong></p>
+          </div>
+        </div>
+
+        <!-- Grid 2x2: antes e depois 3 meses -->
+        <div class="c1-photo-wrap">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="c1-photo-wrap">
+              <div class="c1-photo bw">
+                <img src="riccicoach_assets/image_25.jpeg" alt="Frente — Dia 1">
+                <div class="c1-photo-chip muted">Dia 1</div>
+              </div>
+              <div class="c1-caption"><strong>Frente — Dia 1</strong></div>
+            </div>
+            <div class="c1-photo-wrap">
+              <div class="c1-photo">
+                <img src="riccicoach_assets/image_26.png" alt="Frente — 3 meses">
+                <div class="c1-photo-chip accent">3 meses</div>
+              </div>
+              <div class="c1-caption"><strong>Frente — 3 meses</strong></div>
+            </div>
+            <div class="c1-photo-wrap">
+              <div class="c1-photo bw">
+                <img src="riccicoach_assets/image_23.jpg" alt="Costas — Dia 1">
+                <div class="c1-photo-chip muted">Dia 1</div>
+              </div>
+              <div class="c1-caption"><strong>Costas — Dia 1</strong></div>
+            </div>
+            <div class="c1-photo-wrap">
+              <div class="c1-photo">
+                <img src="riccicoach_assets/image_24.png" alt="Costas — 3 meses">
+                <div class="c1-photo-chip accent">3 meses</div>
+              </div>
+              <div class="c1-caption"><strong>Costas — 3 meses</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVISOR NARRATIVO: ponte entre os 3 meses e os 15 meses -->
+      <div class="evo4-bridge">
+        <div class="evo4-bridge-line"></div>
+        <div class="evo4-bridge-content">
+          <div class="c1-eyebrow" style="justify-content:center;margin-bottom:16px;">O aluno quis mais</div>
+          <p class="evo4-bridge-text">Três meses de resultado concreto — e a escolha óbvia foi <em>continuar.</em><br>O que você vê a seguir é o que acontece quando método encontra comprometimento de longo prazo.</p>
+          <div class="evo4-bridge-arrow">
+            <svg viewBox="0 0 24 40" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+              <line x1="12" y1="0" x2="12" y2="32"/>
+              <polyline points="6,26 12,34 18,26"/>
+            </svg>
+          </div>
+        </div>
+        <div class="evo4-bridge-line"></div>
+      </div>
+
+      <!-- BLOCO HERO: foto destaque 15 meses -->
+      <div class="evo4-hero-block">
+        <div class="evo4-hero-img-wrap">
+          <img src="riccicoach_assets/image_27.jpeg" alt="15 meses de evolução">
+          <div class="evo4-hero-chip">15 meses</div>
+          <div class="evo4-hero-overlay">
+            <div class="evo4-hero-quote">"O resultado que você vê é a soma de cada semana levada a sério."</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOCO números finais -->
+      <div class="c1-nums">
+        <div class="c1-num">
+          <div class="c1-num-val c1-anim">15 meses</div>
+          <div class="c1-num-lbl">De evolução contínua</div>
+          <p class="c1-num-sub">Começou com 3 meses de protocolo. Viu resultado. Escolheu continuar — e o corpo respondeu.</p>
+        </div>
+        <div class="c1-num">
+          <div class="c1-num-val c1-anim">3 pilares</div>
+          <div class="c1-num-lbl">Dieta · Treino · Mindset</div>
+          <p class="c1-num-sub">Comportamento e hábitos construídos de forma intencional. O método que transforma quem escolhe levar a sério.</p>
+        </div>
+      </div>
+
+      <!-- AVISO DE PRIVACIDADE -->
+      <p style="margin-top:clamp(28px,4vw,48px);font-size:10px;color:rgba(255,255,255,0.18);letter-spacing:0.03em;line-height:1.6;border-top:1px solid rgba(255,255,255,0.05);padding-top:16px;">
+        * Rosto e tatuagens foram borrados para preservar a privacidade do aluno. As imagens são de uso exclusivo do RicciCoach e foram compartilhadas com autorização.
+      </p>
+
+    </div>
+  </div>
 
 </div>
 
@@ -1553,6 +1876,25 @@ footer{
   var area    = document.getElementById('evoCardArea');
   var btns    = document.querySelectorAll('.evo-numbtn');
   var current = -1;
+
+  function initReveal(container) {
+    var sel = '.c1-eyebrow,.c1-heading,.c1-entry,.c1-photo,.c1-caption,.c1-num';
+    container.querySelectorAll(sel).forEach(function(el) {
+      var cls = el.classList.contains('c1-photo') ? 'c1-reveal-photo' : 'c1-reveal';
+      el.classList.add(cls);
+    });
+    var all = Array.from(container.querySelectorAll('.c1-reveal,.c1-reveal-photo'));
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        var siblings = Array.from(e.target.parentElement.querySelectorAll('.c1-reveal,.c1-reveal-photo'));
+        var delay = Math.min(siblings.indexOf(e.target) * 80, 280);
+        setTimeout(function() { e.target.classList.add('vis'); }, delay);
+        ro.unobserve(e.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    all.forEach(function(el) { ro.observe(el); });
+  }
 
   function loadCard(idx) {
     var tpl = document.getElementById('evo-tpl-' + idx);
@@ -1565,6 +1907,7 @@ footer{
       clone.removeAttribute('id');
       while (clone.firstChild) area.appendChild(clone.firstChild);
       area.style.opacity = '1';
+      initReveal(area);
       if (idx === 0) {
         setTimeout(function() {
           area.querySelectorAll('.c1-anim').forEach(function(n, i) {
