@@ -22,6 +22,171 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;}
 img{display:block;max-width:100%;}
 
+/* ── MÉTODO EM AÇÃO ── */
+#metodo-acao {
+  padding: clamp(80px,12vw,140px) var(--pad) clamp(60px,10vw,100px);
+  border-top: 1px solid var(--border);
+}
+.ma-header {
+  text-align: center;
+  margin-bottom: clamp(48px,8vw,88px);
+}
+.ma-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.ma-tag::before, .ma-tag::after {
+  content: ''; display: block;
+  width: 24px; height: 2px; background: var(--accent);
+}
+.ma-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(40px,6vw,84px);
+  text-transform: uppercase;
+  line-height: 0.9; letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.ma-title em { font-style: normal; color: var(--accent); }
+.ma-sub {
+  font-size: clamp(13px,1.5vw,15px);
+  color: rgba(255,255,255,0.4);
+  max-width: 420px; margin: 0 auto; line-height: 1.7;
+}
+
+/* Grid 4 fotos */
+.ma-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px,2.5vw,28px);
+}
+.ma-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.ma-img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: #111;
+}
+.ma-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+  transition: transform 7s ease;
+  filter: brightness(0.82);
+}
+.ma-card:hover .ma-img-wrap img {
+  transform: scale(1.05);
+  filter: brightness(0.95);
+}
+.ma-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
+  pointer-events: none;
+}
+.ma-card-label { display: flex; flex-direction: column; gap: 6px; }
+.ma-card-num {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 800;
+  letter-spacing: 0.22em; color: var(--accent);
+}
+.ma-card-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(16px,1.8vw,22px);
+  text-transform: uppercase; letter-spacing: 0.01em;
+}
+.ma-card-desc {
+  font-size: clamp(11px,1.2vw,13px);
+  line-height: 1.65;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+@media(max-width:900px) {
+  .ma-grid { grid-template-columns: repeat(2, 1fr); gap: clamp(14px,3vw,24px); }
+}
+@media(max-width:500px) {
+  .ma-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ma-card-desc { display: none; }
+}
+
+
+/* ── FEEDBACKS ── */
+#feedbacks {
+  padding: clamp(80px,12vw,140px) var(--pad);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fb-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: clamp(32px,5vw,56px);
+}
+.fb-tag::before, .fb-tag::after {
+  content: ''; display: block;
+  width: 24px; height: 2px; background: var(--accent);
+}
+.fb-stage {
+  width: 100%;
+  max-width: 820px;
+  min-height: clamp(180px,28vw,320px);
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: clamp(40px,6vw,64px);
+}
+.fb-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(16px,2.2vw,26px);
+  line-height: 1.72;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  display: none;
+  width: 100%;
+}
+.fb-text.fb-active { display: block; }
+.fb-word {
+  display: inline;
+  color: rgba(255,255,255,0.1);
+  transition: color 0.35s ease;
+}
+.fb-word.lit { color: rgba(255,255,255,0.88); }
+
+/* Indicadores */
+.fb-indicators {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fb-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.fb-dot.active {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+.fb-counter {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.25);
+  margin-left: 8px;
+}
+
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
@@ -857,7 +1022,7 @@ footer{
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#"><img src="riccicoach_assets/image_1.png" alt="Ricci Coach" class="nav-logo-img"></a>
-  <a class="nav-cta" href="https://wa.me/5545998425796?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">
+  <a class="nav-cta" href="https://wa.me/message/RXIAUV6P3QU5H1?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">
     <span class="nav-cta-text">Entrar em Contato</span>
     <span class="ac"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3V10"/></svg></span>
   </a>
@@ -928,7 +1093,7 @@ footer{
     </div>
     <div class="about-cta">
       <p class="about-slogan">Seja <em>"Impossível de ser Ignorado"</em></p>
-      <a class="link-arrow" href="https://wa.me/5545998425796?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">Quero começar <span class="ac"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3V10"/></svg></span></a>
+      <a class="link-arrow" href="https://wa.me/message/RXIAUV6P3QU5H1?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">Quero começar <span class="ac"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13L13 3M13 3H6M13 3V10"/></svg></span></a>
     </div>
   </div>
   <div class="about-right about-logo-side">
@@ -2046,7 +2211,7 @@ footer{
     </div><!-- /timeline-items -->
 
     <div class="timeline-cta">
-      <a href="https://wa.me/5545998425796?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank" class="timeline-cta-btn">
+      <a href="https://wa.me/message/RXIAUV6P3QU5H1?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank" class="timeline-cta-btn">
         Quero começar
         <span class="ac">
           <svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2106,6 +2271,69 @@ footer{
   </div>
 </section>
 
+<!-- MÉTODO EM AÇÃO -->
+<section id="metodo-acao">
+  <div class="ma-header reveal">
+    <div class="ma-tag">O Método em Ação</div>
+    <h2 class="ma-title">MAIS DO QUE<br><em>CONSULTORIA</em></h2>
+    <p class="ma-sub">Presença real. Direção técnica. Cobrança que gera resultado.</p>
+  </div>
+  <div class="ma-grid">
+    <div class="ma-card reveal">
+      <div class="ma-img-wrap">
+        <img src="riccicoach_assets/Tecnica.jpg" alt="Técnica">
+        <div class="ma-img-overlay"></div>
+      </div>
+      <div class="ma-card-label">
+        <span class="ma-card-num">01</span>
+        <span class="ma-card-title">Técnica</span>
+        <p class="ma-card-desc">Execução corrigida no detalhe. O movimento certo é o que gera resultado sem lesão.</p>
+      </div>
+    </div>
+    <div class="ma-card reveal">
+      <div class="ma-img-wrap">
+        <img src="riccicoach_assets/Direcao.jpg" alt="Direção">
+        <div class="ma-img-overlay"></div>
+      </div>
+      <div class="ma-card-label">
+        <span class="ma-card-num">02</span>
+        <span class="ma-card-title">Direção</span>
+        <p class="ma-card-desc">Cada sessão tem propósito. Sem improvisos — planejamento do macro ao microciclo.</p>
+      </div>
+    </div>
+    <div class="ma-card reveal">
+      <div class="ma-img-wrap">
+        <img src="riccicoach_assets/Performance.jpg" alt="Performance">
+        <div class="ma-img-overlay"></div>
+      </div>
+      <div class="ma-card-label">
+        <span class="ma-card-num">03</span>
+        <span class="ma-card-title">Performance</span>
+        <p class="ma-card-desc">Estética e força não se excluem. Protocolo que entrega os dois com estratégia.</p>
+      </div>
+    </div>
+    <div class="ma-card reveal">
+      <div class="ma-img-wrap">
+        <img src="riccicoach_assets/Cobranca.jpg" alt="Cobrança">
+        <div class="ma-img-overlay"></div>
+      </div>
+      <div class="ma-card-label">
+        <span class="ma-card-num">04</span>
+        <span class="ma-card-title">Cobrança</span>
+        <p class="ma-card-desc">Presença que exige execução. Constância construída com acompanhamento real, semana a semana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEEDBACKS -->
+<section id="feedbacks">
+  <div class="fb-tag">Feedbacks</div>
+  <div class="fb-stage" id="fbStage"></div>
+  <div class="fb-indicators" id="fbIndicators"></div>
+</section>
+
 
 <!-- FOOTER -->
 <footer id="contato">
@@ -2117,7 +2345,7 @@ footer{
     <a href="#process">Método</a>
     <a href="#projects">Resultados</a>
     <a href="#testimonials">Depoimentos</a>
-    <a href="https://wa.me/5545998425796?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">Contato</a>
+    <a href="https://wa.me/message/RXIAUV6P3QU5H1?text=Gostaria%20de%20saber%20mais%20sobre%20a%20consultoria" target="_blank">Contato</a>
   </div>
   <div class="footer-copy">© 2025 Ricci Coach. Todos os direitos reservados.</div>
 </footer>
@@ -2242,6 +2470,102 @@ function initTimelineFill() {
     });
   };
   document.head.appendChild(script);
+})();
+
+
+/* ── FEEDBACKS ANIMATION ── */
+(function() {
+  var testimonials = [
+    "Desde que comecei a treinar nunca tinha feito consultoria com alguém que realmente entende e sabe do que esta falando, sempre buscando melhorar, aprimorar e deixar o mais dinâmico possível cada exercício. Rafa admiro o seu esforço e preocupação com que você tem com cada aluno, acho que falando sobre musculação não é algo isolado, vamos dizer assim, é processo e como todo processo é difícil, é custoso mas ter alguém que está junto com você incentivando e fazer o outro enxergar o seu potencial, torna esse processo mais leve. Suporte 1000/10 e com certeza foi mais do que eu esperava.",
+    "Recebi suporte desde o começo, com todas as minhas dificuldades e questionamentos, estou uma delícia, alcancei grande parte dos meus objetivos em 6 meses, e as diferenças são visíveis.",
+    "Sempre fiquei meio com o pé atrás de iniciar um trabalho individual com alguém, mas me surpreendi aqui, simplesmente um cuidado com tudo, alimentação, treino, suporte grande. Por isso sou de longa data haha.",
+    "Excelente, extremamente realista com resultados, orientação e suporte. Graças à consultoria saí dos meus 82Kg para meus 90Kg com qualidade."
+  ];
+
+  var stage = document.getElementById('fbStage');
+  var indicatorsEl = document.getElementById('fbIndicators');
+  if (!stage || !indicatorsEl) return;
+
+  var current = 0;
+  var animTimer = null;
+  var advTimer = null;
+
+  // Build indicators
+  testimonials.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'fb-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function() { goTo(i); });
+    indicatorsEl.appendChild(dot);
+  });
+  var counter = document.createElement('div');
+  counter.className = 'fb-counter';
+  indicatorsEl.appendChild(counter);
+
+  function buildText(idx) {
+    var el = document.createElement('p');
+    el.className = 'fb-text fb-active';
+    var words = testimonials[idx].split(' ');
+    words.forEach(function(w, i) {
+      var span = document.createElement('span');
+      span.className = 'fb-word';
+      span.textContent = w;
+      el.appendChild(span);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+    return el;
+  }
+
+  function updateIndicators(idx) {
+    document.querySelectorAll('.fb-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === idx);
+    });
+    counter.textContent = (idx + 1) + ' / ' + testimonials.length;
+  }
+
+  function animateWords(textEl, onDone) {
+    var words = textEl.querySelectorAll('.fb-word');
+    var total = words.length;
+    // Speed: aim ~6s for short, ~10s for long
+    var baseDelay = Math.min(120, Math.max(40, 600 / total));
+    var i = 0;
+    clearInterval(animTimer);
+    animTimer = setInterval(function() {
+      if (i >= total) {
+        clearInterval(animTimer);
+        // pause then advance
+        advTimer = setTimeout(onDone, 2200);
+        return;
+      }
+      words[i].classList.add('lit');
+      i++;
+    }, baseDelay);
+  }
+
+  function goTo(idx) {
+    clearInterval(animTimer);
+    clearTimeout(advTimer);
+    current = idx;
+    stage.innerHTML = '';
+    var textEl = buildText(idx);
+    stage.appendChild(textEl);
+    updateIndicators(idx);
+    animateWords(textEl, function() {
+      current = (current + 1) % testimonials.length;
+      goTo(current);
+    });
+  }
+
+  // Start when section enters viewport
+  var fbObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        goTo(0);
+        fbObs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  fbObs.observe(stage);
+
 })();
 
 </script>
