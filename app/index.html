@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricci-Control — App da Consultoria RicciCoach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --accent:#BA0C2F;
+  --black:#000;
+  --dark:#0a0a0a;
+  --card:#141414;
+  --card2:#161616;
+  --white:#fff;
+  --border:rgba(255,255,255,0.07);
+  --pad:clamp(20px,5vw,48px);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px var(--pad);
+  background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-brand-badge{
+  width:40px;height:40px;
+  background:var(--card);
+  border:1px solid rgba(186,12,47,0.35);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-brand-badge img{width:28px;height:28px;object-fit:contain;}
+.nav-brand-copy{display:flex;flex-direction:column;gap:1px;}
+.nav-brand-kicker{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);
+}
+.nav-brand-name{
+  font-family:'Syne',sans-serif;font-size:16px;font-weight:800;
+  letter-spacing:-0.02em;color:var(--white);
+}
+.nav-back{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Instrument Sans',sans-serif;font-weight:600;
+  font-size:clamp(11px,1.4vw,13px);color:rgba(255,255,255,0.45);
+  text-decoration:none;letter-spacing:0.02em;
+  transition:color 0.2s;
+}
+.nav-back:hover{color:var(--white);}
+.nav-back svg{width:13px;height:13px;transform:rotate(180deg);}
+
+/* ── EYEBROW ── */
+.eyebrow{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:20px;
+}
+.eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--accent);flex-shrink:0;}
+
+/* ── HERO ── */
+#hero{
+  padding:clamp(64px,10vw,120px) var(--pad) clamp(48px,8vw,96px);
+  border-bottom:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 16px;
+  border:1px solid rgba(186,12,47,0.35);
+  background:rgba(186,12,47,0.06);
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  margin-bottom:24px;width:fit-content;
+}
+.hero-tag-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 12px rgba(186,12,47,0.8);
+}
+.hero-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(48px,7vw,100px);
+  line-height:0.88;letter-spacing:-0.03em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.hero-title em{font-style:normal;color:var(--accent);}
+.hero-desc{
+  font-size:clamp(14px,1.6vw,16px);line-height:1.75;
+  color:rgba(255,255,255,0.5);max-width:420px;
+}
+.hero-visual{
+  display:flex;justify-content:center;align-items:center;
+  position:relative;
+}
+.hero-phone-wrap{
+  position:relative;
+  width:clamp(220px,26vw,290px);
+}
+.hero-phone-wrap img{
+  width:100%;height:auto;
+  filter:drop-shadow(0 40px 80px rgba(186,12,47,0.15));
+}
+
+/* ── SEÇÕES BASE ── */
+.section{
+  padding:clamp(64px,10vw,120px) var(--pad);
+  border-bottom:1px solid var(--border);
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(28px,3.5vw,50px);
+  text-transform:uppercase;line-height:0.93;letter-spacing:-0.02em;
+  margin-bottom:24px;
+}
+.section-title em{font-style:normal;color:var(--accent);}
+.section-body{
+  font-size:clamp(13px,1.5vw,15px);line-height:1.78;
+  color:rgba(255,255,255,0.5);
+}
+
+/* ── O QUE É ── */
+#o-que-e{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:center;
+}
+.oque-right{
+  display:flex;justify-content:center;
+}
+.oque-phone{
+  width:clamp(200px,22vw,260px);
+}
+.oque-phone img{
+  width:100%;height:auto;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+}
+
+/* ── FUNCIONALIDADES ── */
+#funcionalidades{background:var(--dark);}
+.func-header{margin-bottom:clamp(40px,6vw,72px);}
+.func-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+}
+.func-card{
+  background:var(--card2);
+  padding:clamp(24px,3.5vw,36px) clamp(20px,3vw,32px);
+  display:flex;flex-direction:column;gap:12px;
+  border-left:3px solid transparent;
+  transition:border-left-color 0.3s,background 0.3s;
+}
+.func-card:hover{background:#1a1a1a;border-left-color:var(--accent);}
+.func-num{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:800;
+  letter-spacing:0.2em;color:var(--accent);
+}
+.func-name{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(14px,1.8vw,18px);text-transform:uppercase;letter-spacing:0.01em;
+}
+.func-desc{
+  font-size:clamp(12px,1.3vw,13px);line-height:1.68;
+  color:rgba(255,255,255,0.45);
+}
+
+/* ── TELAS ── */
+#telas{padding:clamp(64px,10vw,120px) var(--pad);border-bottom:1px solid var(--border);}
+.telas-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:24px;align-items:end;
+  margin-bottom:clamp(40px,6vw,72px);
+}
+.telas-header p{
+  font-size:clamp(13px,1.4vw,15px);line-height:1.72;
+  color:rgba(255,255,255,0.4);max-width:360px;justify-self:end;
+}
+.telas-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(12px,2vw,20px);
+}
+.tela-item{display:flex;flex-direction:column;gap:14px;}
+.tela-screen{
+  aspect-ratio:9/19;overflow:hidden;position:relative;
+  background:var(--card2);border:1px solid var(--border);
+  transition:border-color 0.3s;
+}
+.tela-screen:hover{border-color:rgba(186,12,47,0.4);}
+.tela-screen img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:top;
+}
+.tela-label{display:flex;flex-direction:column;gap:4px;}
+.tela-label-num{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:800;
+  letter-spacing:0.18em;color:var(--accent);
+}
+.tela-label-name{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(11px,1.3vw,13px);text-transform:uppercase;letter-spacing:0.04em;
+}
+
+/* ── TÉCNICAS ── */
+#tecnicas{background:var(--dark);}
+.tecnicas-header{margin-bottom:clamp(40px,6vw,64px);}
+.tecnicas-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(16px,2.5vw,24px);
+}
+.tecnica-card{
+  display:grid;grid-template-columns:auto 1fr;
+  gap:0;
+  border:1px solid var(--border);background:var(--card);
+  overflow:hidden;
+  transition:border-color 0.3s;
+}
+.tecnica-card:hover{border-color:rgba(186,12,47,0.35);}
+.tecnica-screen{
+  width:clamp(130px,16vw,180px);
+  flex-shrink:0;
+  overflow:hidden;
+  position:relative;
+}
+.tecnica-screen img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top;
+  display:block;
+}
+.tecnica-info{
+  padding:clamp(20px,2.5vw,28px);
+  display:flex;flex-direction:column;gap:10px;
+  justify-content:center;
+}
+.tecnica-badge{
+  display:inline-flex;align-items:center;
+  padding:4px 10px;
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;
+  background:rgba(186,12,47,0.12);color:var(--accent);
+  border:1px solid rgba(186,12,47,0.2);
+  width:fit-content;
+}
+.tecnica-name{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(16px,2vw,22px);text-transform:uppercase;letter-spacing:-0.01em;
+}
+.tecnica-desc{
+  font-size:clamp(12px,1.3vw,13px);line-height:1.65;
+  color:rgba(255,255,255,0.45);
+}
+
+/* ── EVOLUÇÃO ── */
+#evolucao{padding:clamp(64px,10vw,120px) var(--pad);border-bottom:1px solid var(--border);}
+.evolucao-header{margin-bottom:clamp(40px,6vw,64px);}
+.evolucao-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:clamp(12px,2vw,20px);
+  align-items:start;
+}
+.evolucao-screen{
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--card2);
+  transition:border-color 0.3s;
+}
+.evolucao-screen:hover{border-color:rgba(186,12,47,0.35);}
+.evolucao-screen img{
+  width:100%;height:auto;display:block;
+}
+.evolucao-label{
+  padding:16px;
+  border-top:1px solid var(--border);
+}
+.evolucao-label-name{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(11px,1.3vw,13px);text-transform:uppercase;letter-spacing:0.06em;
+  margin-bottom:4px;
+}
+.evolucao-label-desc{
+  font-size:11px;line-height:1.6;color:rgba(255,255,255,0.35);
+}
+
+/* ── FLUXO ── */
+#fluxo{background:var(--dark);}
+.fluxo-header{margin-bottom:clamp(40px,6vw,64px);}
+.fluxo-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;border:1px solid var(--border);
+}
+.fluxo-step{
+  padding:clamp(20px,3vw,32px) clamp(16px,2.5vw,24px);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:12px;
+}
+.fluxo-step:last-child{border-right:none;}
+.fluxo-num{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:800;
+  letter-spacing:0.18em;color:var(--accent);
+}
+.fluxo-name{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:0.02em;
+}
+.fluxo-desc{
+  font-size:clamp(11px,1.2vw,13px);line-height:1.65;color:rgba(255,255,255,0.45);
+}
+
+/* ── CTA ── */
+#cta{
+  padding:clamp(80px,12vw,140px) var(--pad);
+  display:grid;grid-template-columns:1fr auto;
+  gap:clamp(40px,6vw,80px);align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.cta-left{}
+.cta-eyebrow{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.cta-eyebrow::before{content:'';display:block;width:24px;height:2px;background:var(--accent);}
+.cta-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(32px,5vw,72px);
+  text-transform:uppercase;line-height:0.9;letter-spacing:-0.02em;
+  margin-bottom:20px;
+}
+.cta-title em{font-style:normal;color:var(--accent);}
+.cta-desc{
+  font-size:clamp(13px,1.5vw,15px);line-height:1.72;
+  color:rgba(255,255,255,0.45);max-width:400px;margin-bottom:36px;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--accent);padding:16px 32px;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;
+  transition:opacity 0.2s,transform 0.2s;
+}
+.cta-btn:hover{opacity:0.88;transform:translateY(-2px);}
+.cta-btn .ac{
+  width:32px;height:32px;background:rgba(255,255,255,0.15);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transition:transform 0.3s;
+}
+.cta-btn:hover .ac{transform:rotate(45deg) scale(1.1);}
+.cta-btn .ac svg{width:13px;height:13px;}
+.cta-right{
+  flex-shrink:0;
+}
+.cta-store-card{
+  width:clamp(260px,28vw,340px);
+}
+.cta-store-card img{
+  width:100%;height:auto;
+  filter:drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:clamp(24px,4vw,40px) var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-brand{
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);text-decoration:none;
+}
+.footer-note{font-size:11px;color:rgba(255,255,255,0.15);letter-spacing:0.06em;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  #hero,#o-que-e,#cta{grid-template-columns:1fr;}
+  .hero-visual,.oque-right{justify-content:flex-start;}
+  .cta-right{display:none;}
+  .func-grid{grid-template-columns:1fr 1fr;}
+  .telas-grid{grid-template-columns:repeat(2,1fr);}
+  .telas-header{grid-template-columns:1fr;}
+  .tecnicas-grid{grid-template-columns:1fr;}
+  .evolucao-grid{grid-template-columns:1fr 1fr;}
+  .fluxo-steps{grid-template-columns:1fr 1fr;}
+  .fluxo-step{border-right:none;border-bottom:1px solid var(--border);}
+  .fluxo-step:last-child{border-bottom:none;}
+}
+@media(max-width:540px){
+  .func-grid{grid-template-columns:1fr;}
+  .telas-grid{grid-template-columns:1fr 1fr;}
+  .evolucao-grid{grid-template-columns:1fr;}
+  .tecnica-card{grid-template-columns:1fr;}
+  .tecnica-screen{width:100%;max-height:260px;}
+  .fluxo-steps{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:10px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-brand-badge">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round">
+        <rect x="4" y="2" width="16" height="20" rx="1"/><line x1="8" y1="7" x2="16" y2="7"/>
+        <line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/>
+      </svg>
+    </div>
+    <div class="nav-brand-copy">
+      <span class="nav-brand-kicker">App exclusivo</span>
+      <span class="nav-brand-name">Ricci-Control</span>
+    </div>
+  </a>
+  <a href="../index.html" class="nav-back">
+    Voltar para RicciCoach
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 13L13 3M13 3H6M13 3V10"/>
+    </svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Exclusivo para alunos ativos
+    </div>
+    <h1 class="hero-title">Ricci-<em>Control</em></h1>
+    <p class="hero-desc">
+      Parte do método. Não é um app avulso — é onde o treino construído para você existe, organizado, acessível e acompanhado em tempo real.
+    </p>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-phone-wrap">
+      <img src="assets/tela-inicial.png" alt="Tela inicial do Ricci-Control">
+    </div>
+  </div>
+</section>
+
+<!-- O QUE É -->
+<section id="o-que-e" class="section">
+  <div class="oque-left">
+    <div class="eyebrow">O que é</div>
+    <h2 class="section-title">Seu treino<br><em>centralizado</em></h2>
+    <p class="section-body">
+      O Ricci-Control existe porque treino sério precisa de estrutura séria. Cada protocolo montado para você fica registrado aqui — exercícios, séries, cargas, técnicas avançadas — com vídeo e descrição de cada movimento, sem depender de mensagem, planilha ou memória.
+    </p>
+  </div>
+  <div class="oque-right">
+    <div class="oque-phone">
+      <img src="assets/tela-video-exercicio.png" alt="Vídeo e descrição do exercício">
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADES -->
+<section id="funcionalidades" class="section">
+  <div class="func-header">
+    <div class="eyebrow">O que você acessa</div>
+    <h2 class="section-title" style="max-width:540px;">Cada detalhe<br>do seu <em>protocolo</em></h2>
+  </div>
+  <div class="func-grid">
+    <div class="func-card">
+      <span class="func-num">01</span>
+      <h3 class="func-name">Treinos ativos</h3>
+      <p class="func-desc">Seus treinos disponíveis com sessões separadas, prontos para iniciar sem atrito. Sem achismo sobre o que fazer.</p>
+    </div>
+    <div class="func-card">
+      <span class="func-num">02</span>
+      <h3 class="func-name">Execução guiada</h3>
+      <p class="func-desc">Cada exercício com vídeo, descrição, número de séries, repetições, descanso e técnicas avançadas explicadas no contexto certo.</p>
+    </div>
+    <div class="func-card">
+      <span class="func-num">03</span>
+      <h3 class="func-name">Registro de cargas</h3>
+      <p class="func-desc">Anote o que foi feito em cada sessão via scroll picker. O histórico fica salvo, permitindo comparação treino a treino.</p>
+    </div>
+    <div class="func-card">
+      <span class="func-num">04</span>
+      <h3 class="func-name">Evolução visível</h3>
+      <p class="func-desc">Acompanhe PR, frequência, aderência e progresso de carga do micro ao macro. A evolução se torna concreta, não abstrata.</p>
+    </div>
+    <div class="func-card">
+      <span class="func-num">05</span>
+      <h3 class="func-name">Acesso individual</h3>
+      <p class="func-desc">Login privado com acesso exclusivo ao seu ambiente. Somente você e seu treinador enxergam o que está dentro.</p>
+    </div>
+    <div class="func-card">
+      <span class="func-num">06</span>
+      <h3 class="func-name">Notificação ao treinador</h3>
+      <p class="func-desc">Quando você finaliza uma sessão, o treinador é notificado. O acompanhamento não para quando você fecha o app.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TELAS -->
+<section id="telas">
+  <div class="telas-header">
+    <div>
+      <div class="eyebrow">Dentro do app</div>
+      <h2 class="section-title">As telas<br>do <em>método</em></h2>
+    </div>
+    <p>Da entrada ao fim da sessão — cada etapa do treino tem uma tela pensada para isso.</p>
+  </div>
+  <div class="telas-grid">
+    <div class="tela-item">
+      <div class="tela-screen">
+        <img src="assets/tela-login.png" alt="Login — Portal do Aluno">
+      </div>
+      <div class="tela-label">
+        <span class="tela-label-num">01</span>
+        <span class="tela-label-name">Login & acesso</span>
+      </div>
+    </div>
+    <div class="tela-item">
+      <div class="tela-screen">
+        <img src="assets/tela-sessoes.png" alt="Sessões do treino">
+      </div>
+      <div class="tela-label">
+        <span class="tela-label-num">02</span>
+        <span class="tela-label-name">Sessões do treino</span>
+      </div>
+    </div>
+    <div class="tela-item">
+      <div class="tela-screen">
+        <img src="assets/tela-treino-ativo.png" alt="Treino em execução">
+      </div>
+      <div class="tela-label">
+        <span class="tela-label-num">03</span>
+        <span class="tela-label-name">Treino em execução</span>
+      </div>
+    </div>
+    <div class="tela-item">
+      <div class="tela-screen">
+        <img src="assets/tela-selecao-carga.png" alt="Seleção de carga e reps">
+      </div>
+      <div class="tela-label">
+        <span class="tela-label-num">04</span>
+        <span class="tela-label-name">Registro de carga</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉCNICAS AVANÇADAS -->
+<section id="tecnicas" class="section">
+  <div class="tecnicas-header">
+    <div class="eyebrow">Técnicas avançadas</div>
+    <h2 class="section-title" style="max-width:560px;">O app explica<br>o que você <em>precisa fazer</em></h2>
+    <p class="section-body" style="max-width:520px;margin-top:16px;">
+      Cada técnica prescrita no protocolo tem um modal explicativo dentro do app. Sem dúvida na execução, sem precisar perguntar.
+    </p>
+  </div>
+  <div class="tecnicas-grid">
+    <div class="tecnica-card">
+      <div class="tecnica-screen">
+        <img src="assets/modal-top-set.png" alt="Modal Top Set">
+      </div>
+      <div class="tecnica-info">
+        <span class="tecnica-badge">Técnica avançada</span>
+        <h3 class="tecnica-name">Top Set</h3>
+        <p class="tecnica-desc">Série mais pesada do treino — máxima proximidade da falha. Carga máxima, sem redução. RIR 0-1: leve ao limite ou à falha.</p>
+      </div>
+    </div>
+    <div class="tecnica-card">
+      <div class="tecnica-screen">
+        <img src="assets/modal-drop-set.png" alt="Modal Drop Set">
+      </div>
+      <div class="tecnica-info">
+        <span class="tecnica-badge">Técnica avançada</span>
+        <h3 class="tecnica-name">Drop Set</h3>
+        <p class="tecnica-desc">Execute até a falha ou limite prescrito. Reduza o peso em 50% imediatamente, sem descanso. O app registra cada queda automaticamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVOLUÇÃO -->
+<section id="evolucao">
+  <div class="evolucao-header">
+    <div class="eyebrow">Progresso real</div>
+    <h2 class="section-title">Do micro<br>ao <em>macro</em></h2>
+    <p class="section-body" style="max-width:500px;margin-top:16px;">
+      Carga total por treino, PR por exercício, frequência e aderência. Números que transformam esforço subjetivo em dado objetivo.
+    </p>
+  </div>
+  <div class="evolucao-grid">
+    <div class="evolucao-screen">
+      <img src="assets/tela-evolucao.png" alt="Evolução — carga total">
+      <div class="evolucao-label">
+        <div class="evolucao-label-name">Carga total por treino</div>
+        <div class="evolucao-label-desc">Volume acumulado sessão a sessão. Vê a curva de evolução do protocolo inteiro.</div>
+      </div>
+    </div>
+    <div class="evolucao-screen">
+      <img src="assets/tela-evolucao-exercicio.png" alt="Evolução por exercício">
+      <div class="evolucao-label">
+        <div class="evolucao-label-name">Carga por exercício</div>
+        <div class="evolucao-label-desc">PR registrado automaticamente. Gráfico de progresso isolado por movimento.</div>
+      </div>
+    </div>
+    <div class="evolucao-screen">
+      <img src="assets/tela-frequencia.png" alt="Frequência e aderência">
+      <div class="evolucao-label">
+        <div class="evolucao-label-name">Frequência & aderência</div>
+        <div class="evolucao-label-desc">Calendário de treinos, total de sessões e percentual de aderência ao protocolo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLUXO -->
+<section id="fluxo" class="section">
+  <div class="fluxo-header">
+    <div class="eyebrow">Como funciona</div>
+    <h2 class="section-title">Do primeiro acesso<br>ao <em>resultado</em></h2>
+  </div>
+  <div class="fluxo-steps">
+    <div class="fluxo-step">
+      <span class="fluxo-num">01</span>
+      <h3 class="fluxo-name">Acesso gerado</h3>
+      <p class="fluxo-desc">Ao entrar na consultoria, você recebe suas credenciais. Login privado, ambiente individual.</p>
+    </div>
+    <div class="fluxo-step">
+      <span class="fluxo-num">02</span>
+      <h3 class="fluxo-name">Protocolo entregue</h3>
+      <p class="fluxo-desc">Seu treino é montado e publicado diretamente no app. Nada de PDF, nada de print.</p>
+    </div>
+    <div class="fluxo-step">
+      <span class="fluxo-num">03</span>
+      <h3 class="fluxo-name">Execução no app</h3>
+      <p class="fluxo-desc">Você abre a sessão, segue o protocolo com detalhes, registra cargas e finaliza.</p>
+    </div>
+    <div class="fluxo-step">
+      <span class="fluxo-num">04</span>
+      <h3 class="fluxo-name">Treinador notificado</h3>
+      <p class="fluxo-desc">O treinador vê que você treinou. Acompanhamento real, não baseado em relato.</p>
+    </div>
+    <div class="fluxo-step">
+      <span class="fluxo-num">05</span>
+      <h3 class="fluxo-name">Ajuste com dados</h3>
+      <p class="fluxo-desc">Cada sessão registrada alimenta a análise. Ajustes são feitos com base em evolução real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-left">
+    <div class="cta-eyebrow">O acesso vem com a consultoria</div>
+    <h2 class="cta-title">O app vem<br>com o <em>método</em></h2>
+    <p class="cta-desc">O Ricci-Control não é vendido separado. Faz parte do processo. Para ter acesso, o caminho é começar a consultoria.</p>
+    <a href="https://wa.me/5545998425796?text=Quero%20saber%20sobre%20a%20consultoria" target="_blank" class="cta-btn">
+      Quero a consultoria
+      <span class="ac">
+        <svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 13L13 3M13 3H6M13 3V10"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <div class="cta-right">
+    <div class="cta-store-card">
+      <img src="assets/card-app-store.png" alt="Ricci C — Visualização e Progresso do Micro ao Macro">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="../index.html" class="footer-brand">RicciCoach</a>
+  <span class="footer-note">Ricci-Control · Exclusivo para alunos</span>
+</footer>
+
+</body>
+</html>
