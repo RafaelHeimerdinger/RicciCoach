@@ -397,6 +397,27 @@ footer{
 }
 .footer-note{font-size:11px;color:rgba(255,255,255,0.15);letter-spacing:0.06em;}
 
+/* ── ANIMAÇÕES ── */
+/* estados iniciais */
+[data-reveal], [data-hero]{
+  opacity:0;
+  will-change:opacity,transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+    transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+[data-reveal="up"],   [data-hero]     { transform:translateY(30px); }
+[data-reveal="left"]                  { transform:translateX(-30px); }
+[data-reveal="right"]                 { transform:translateX(30px); }
+[data-reveal="scale"]                 { transform:scale(0.93) translateY(16px); }
+[data-reveal="fade"]                  { transform:none; }
+
+/* estado visível */
+[data-reveal].vis, [data-hero].vis{
+  opacity:1;
+  transform:none;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
   #hero,#o-que-e{grid-template-columns:1fr;}
@@ -448,17 +469,17 @@ footer{
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-tag">
+    <div class="hero-tag" data-hero style="transition-delay:0s">
       <span class="hero-tag-dot"></span>
       Exclusivo para alunos ativos
     </div>
-    <h1 class="hero-title">Ricci-<em>Control</em></h1>
-    <p class="hero-desc">
+    <h1 class="hero-title" data-hero style="transition-delay:0.1s">Ricci-<em>Control</em></h1>
+    <p class="hero-desc" data-hero style="transition-delay:0.22s">
       Parte do método. Não é um app avulso — é onde o treino construído para você existe, organizado, acessível e acompanhado em tempo real.
     </p>
   </div>
   <div class="hero-visual">
-    <div class="hero-phone-wrap">
+    <div class="hero-phone-wrap" data-hero style="transition-delay:0.18s;transition-duration:0.9s">
       <img src="assets/tela-inicial.png" alt="Tela inicial do Ricci-Control">
     </div>
   </div>
@@ -467,13 +488,13 @@ footer{
 <!-- O QUE É -->
 <section id="o-que-e" class="section">
   <div class="oque-left">
-    <div class="eyebrow">O que é</div>
-    <h2 class="section-title">Seu treino<br><em>centralizado</em></h2>
-    <p class="section-body">
+    <div class="eyebrow" data-reveal="up">O que é</div>
+    <h2 class="section-title" data-reveal="up" style="transition-delay:0.1s">Seu treino<br><em>centralizado</em></h2>
+    <p class="section-body" data-reveal="up" style="transition-delay:0.2s">
       O Ricci-Control existe porque treino sério precisa de estrutura séria. Cada protocolo montado para você fica registrado aqui — exercícios, séries, cargas, técnicas avançadas — com vídeo e descrição de cada movimento, sem depender de mensagem, planilha ou memória.
     </p>
   </div>
-  <div class="oque-right">
+  <div class="oque-right" data-reveal="right" style="transition-delay:0.12s;transition-duration:0.85s">
     <div class="oque-phone">
       <img src="assets/tela-video-exercicio.png" alt="Vídeo e descrição do exercício">
     </div>
@@ -482,37 +503,37 @@ footer{
 
 <!-- FUNCIONALIDADES -->
 <section id="funcionalidades" class="section">
-  <div class="func-header">
+  <div class="func-header" data-reveal="up">
     <div class="eyebrow">O que você acessa</div>
     <h2 class="section-title" style="max-width:540px;">Cada detalhe<br>do seu <em>protocolo</em></h2>
   </div>
   <div class="func-grid">
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0s">
       <span class="func-num">01</span>
       <h3 class="func-name">Treinos ativos</h3>
       <p class="func-desc">Seus treinos disponíveis com sessões separadas, prontos para iniciar sem atrito. Sem achismo sobre o que fazer.</p>
     </div>
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0.08s">
       <span class="func-num">02</span>
       <h3 class="func-name">Execução guiada</h3>
       <p class="func-desc">Cada exercício com vídeo, descrição, número de séries, repetições, descanso e técnicas avançadas explicadas no contexto certo.</p>
     </div>
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0.16s">
       <span class="func-num">03</span>
       <h3 class="func-name">Registro de cargas</h3>
       <p class="func-desc">Anote o que foi feito em cada sessão via scroll picker. O histórico fica salvo, permitindo comparação treino a treino.</p>
     </div>
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0.24s">
       <span class="func-num">04</span>
       <h3 class="func-name">Evolução visível</h3>
       <p class="func-desc">Acompanhe PR, frequência, aderência e progresso de carga do micro ao macro. A evolução se torna concreta, não abstrata.</p>
     </div>
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0.32s">
       <span class="func-num">05</span>
       <h3 class="func-name">Acesso individual</h3>
       <p class="func-desc">Login privado com acesso exclusivo ao seu ambiente. Somente você e seu treinador enxergam o que está dentro.</p>
     </div>
-    <div class="func-card">
+    <div class="func-card" data-reveal="up" style="transition-delay:0.40s">
       <span class="func-num">06</span>
       <h3 class="func-name">Notificação ao treinador</h3>
       <p class="func-desc">Quando você finaliza uma sessão, o treinador é notificado. O acompanhamento não para quando você fecha o app.</p>
@@ -522,7 +543,7 @@ footer{
 
 <!-- TELAS -->
 <section id="telas">
-  <div class="telas-header">
+  <div class="telas-header" data-reveal="up">
     <div>
       <div class="eyebrow">Dentro do app</div>
       <h2 class="section-title">As telas<br>do <em>método</em></h2>
@@ -530,7 +551,7 @@ footer{
     <p>Da entrada ao fim da sessão — cada etapa do treino tem uma tela pensada para isso.</p>
   </div>
   <div class="telas-grid">
-    <div class="tela-item">
+    <div class="tela-item" data-reveal="up" style="transition-delay:0s">
       <div class="tela-screen">
         <img src="assets/tela-login.png" alt="Login — Portal do Aluno">
       </div>
@@ -539,7 +560,7 @@ footer{
         <span class="tela-label-name">Login & acesso</span>
       </div>
     </div>
-    <div class="tela-item">
+    <div class="tela-item" data-reveal="up" style="transition-delay:0.1s">
       <div class="tela-screen">
         <img src="assets/tela-sessoes.png" alt="Sessões do treino">
       </div>
@@ -548,7 +569,7 @@ footer{
         <span class="tela-label-name">Sessões do treino</span>
       </div>
     </div>
-    <div class="tela-item">
+    <div class="tela-item" data-reveal="up" style="transition-delay:0.2s">
       <div class="tela-screen">
         <img src="assets/tela-treino-ativo.png" alt="Treino em execução">
       </div>
@@ -557,7 +578,7 @@ footer{
         <span class="tela-label-name">Treino em execução</span>
       </div>
     </div>
-    <div class="tela-item">
+    <div class="tela-item" data-reveal="up" style="transition-delay:0.3s">
       <div class="tela-screen">
         <img src="assets/tela-selecao-carga.png" alt="Seleção de carga e reps">
       </div>
@@ -571,7 +592,7 @@ footer{
 
 <!-- TÉCNICAS AVANÇADAS -->
 <section id="tecnicas" class="section">
-  <div class="tecnicas-header">
+  <div class="tecnicas-header" data-reveal="up">
     <div class="eyebrow">Técnicas avançadas</div>
     <h2 class="section-title" style="max-width:560px;">O app explica<br>o que você <em>precisa fazer</em></h2>
     <p class="section-body" style="max-width:520px;margin-top:16px;">
@@ -579,7 +600,7 @@ footer{
     </p>
   </div>
   <div class="tecnicas-grid">
-    <div class="tecnica-card">
+    <div class="tecnica-card" data-reveal="left" style="transition-delay:0.05s">
       <div class="tecnica-info">
         <span class="tecnica-badge">Técnica avançada</span>
         <h3 class="tecnica-name">Top Set</h3>
@@ -589,7 +610,7 @@ footer{
         <img src="assets/modal-top-set.png" alt="Modal Top Set">
       </div>
     </div>
-    <div class="tecnica-card">
+    <div class="tecnica-card" data-reveal="right" style="transition-delay:0.15s">
       <div class="tecnica-info">
         <span class="tecnica-badge">Técnica avançada</span>
         <h3 class="tecnica-name">Drop Set</h3>
@@ -604,7 +625,7 @@ footer{
 
 <!-- EVOLUÇÃO -->
 <section id="evolucao">
-  <div class="evolucao-header">
+  <div class="evolucao-header" data-reveal="up">
     <div class="eyebrow">Progresso real</div>
     <h2 class="section-title">Do micro<br>ao <em>macro</em></h2>
     <p class="section-body" style="max-width:500px;margin-top:16px;">
@@ -612,21 +633,21 @@ footer{
     </p>
   </div>
   <div class="evolucao-grid">
-    <div class="evolucao-screen">
+    <div class="evolucao-screen" data-reveal="scale" style="transition-delay:0s">
       <img src="assets/tela-evolucao.png" alt="Evolução — carga total">
       <div class="evolucao-label">
         <div class="evolucao-label-name">Carga total por treino</div>
         <div class="evolucao-label-desc">Volume acumulado sessão a sessão. Vê a curva de evolução do protocolo inteiro.</div>
       </div>
     </div>
-    <div class="evolucao-screen">
+    <div class="evolucao-screen" data-reveal="scale" style="transition-delay:0.12s">
       <img src="assets/tela-evolucao-exercicio.png" alt="Evolução por exercício">
       <div class="evolucao-label">
         <div class="evolucao-label-name">Carga por exercício</div>
         <div class="evolucao-label-desc">PR registrado automaticamente. Gráfico de progresso isolado por movimento.</div>
       </div>
     </div>
-    <div class="evolucao-screen">
+    <div class="evolucao-screen" data-reveal="scale" style="transition-delay:0.24s">
       <img src="assets/tela-frequencia.png" alt="Frequência e aderência">
       <div class="evolucao-label">
         <div class="evolucao-label-name">Frequência & aderência</div>
@@ -638,32 +659,32 @@ footer{
 
 <!-- FLUXO -->
 <section id="fluxo" class="section">
-  <div class="fluxo-header">
+  <div class="fluxo-header" data-reveal="up">
     <div class="eyebrow">Como funciona</div>
     <h2 class="section-title">Do primeiro acesso<br>ao <em>resultado</em></h2>
   </div>
   <div class="fluxo-steps">
-    <div class="fluxo-step">
+    <div class="fluxo-step" data-reveal="up" style="transition-delay:0s">
       <span class="fluxo-num">01</span>
       <h3 class="fluxo-name">Acesso gerado</h3>
       <p class="fluxo-desc">Ao entrar na consultoria, você recebe suas credenciais. Login privado, ambiente individual.</p>
     </div>
-    <div class="fluxo-step">
+    <div class="fluxo-step" data-reveal="up" style="transition-delay:0.08s">
       <span class="fluxo-num">02</span>
       <h3 class="fluxo-name">Protocolo entregue</h3>
       <p class="fluxo-desc">Seu treino é montado e publicado diretamente no app. Nada de PDF, nada de print.</p>
     </div>
-    <div class="fluxo-step">
+    <div class="fluxo-step" data-reveal="up" style="transition-delay:0.16s">
       <span class="fluxo-num">03</span>
       <h3 class="fluxo-name">Execução no app</h3>
       <p class="fluxo-desc">Você abre a sessão, segue o protocolo com detalhes, registra cargas e finaliza.</p>
     </div>
-    <div class="fluxo-step">
+    <div class="fluxo-step" data-reveal="up" style="transition-delay:0.24s">
       <span class="fluxo-num">04</span>
       <h3 class="fluxo-name">Treinador notificado</h3>
       <p class="fluxo-desc">O treinador vê que você treinou. Acompanhamento real, não baseado em relato.</p>
     </div>
-    <div class="fluxo-step">
+    <div class="fluxo-step" data-reveal="up" style="transition-delay:0.32s">
       <span class="fluxo-num">05</span>
       <h3 class="fluxo-name">Ajuste com dados</h3>
       <p class="fluxo-desc">Cada sessão registrada alimenta a análise. Ajustes são feitos com base em evolução real.</p>
@@ -673,7 +694,7 @@ footer{
 
 <!-- CTA -->
 <section id="cta">
-  <div class="cta-left">
+  <div class="cta-left" data-reveal="up">
     <div class="cta-eyebrow">O acesso vem com a consultoria</div>
     <h2 class="cta-title">O app vem<br>com o <em>método</em></h2>
     <p class="cta-desc">O Ricci-Control não é vendido separado. Faz parte do processo. Para ter acesso, o caminho é começar a consultoria.</p>
@@ -686,10 +707,10 @@ footer{
       </span>
     </a>
   </div>
-  <div class="cta-mockup">
+  <div class="cta-mockup" data-reveal="scale" style="transition-delay:0.18s;transition-duration:0.9s">
     <img src="assets/mockup-celular-hero.png" alt="Ricci-Control no celular">
   </div>
-  <div class="cta-right">
+  <div class="cta-right" data-reveal="scale" style="transition-delay:0.3s;transition-duration:0.9s">
     <div class="cta-store-card">
       <img src="assets/card-app-store.png" alt="Ricci C — Visualização e Progresso do Micro ao Macro">
     </div>
@@ -702,5 +723,33 @@ footer{
   <span class="footer-note">Ricci-Control · Exclusivo para alunos</span>
 </footer>
 
+<script>
+(function(){
+  /* ── Hero: anima no load ── */
+  var heroEls = document.querySelectorAll('[data-hero]');
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      heroEls.forEach(function(el){ el.classList.add('vis'); });
+    }, 80);
+  });
+
+  /* ── Scroll: IntersectionObserver ── */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        io.unobserve(e.target);
+      }
+    });
+  },{
+    threshold: 0.1,
+    rootMargin: '0px 0px -48px 0px'
+  });
+
+  document.querySelectorAll('[data-reveal]').forEach(function(el){
+    io.observe(el);
+  });
+})();
+</script>
 </body>
 </html>
